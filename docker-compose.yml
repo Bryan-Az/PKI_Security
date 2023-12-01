@@ -13,8 +13,8 @@ services:
       - ./conf:/usr/local/tomcat/conf
       - certs:/usr/local/tomcat/certs
       - tls-log:/var/log/letsencrypt
-    networks:
-      - web_network
+    #networks:
+    #  - web_network
 
   tls:
     user: root
@@ -27,12 +27,12 @@ services:
       - ./data:/data/letsencrypt
       - ./web_apps:/usr/local/tomcat/webapps
       - tls-log:/var/log/letsencrypt
-    networks:
-      - web_network
+    #networks:
+    #  - web_network
     command: certonly -v --webroot --non-interactive --webroot-path=/usr/local/tomcat/webapps/myapp --email bryanambzam@gmail.com --agree-tos --no-eff-email --staging -d bambriz.me,www.bambriz.me
 volumes:
   certs:
   tls-log:
-networks:
-  web_network:
-    driver: bridge
+#networks:
+#  web_network:
+#    driver: bridge
