@@ -16,7 +16,7 @@ services:
   tls:
     user: root
     depends_on:
-      - tomcat
+      - webserver 
     image: certbot/certbot
     container_name: tls
     volumes:
