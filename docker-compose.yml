@@ -26,7 +26,7 @@ services:
       - ./web_apps:/usr/local/tomcat/webapps
     networks:
       - web_network
-    command: certonly --webroot --non-interactive --webroot-path=/usr/local/tomcat/webapps --email bryanambzam@gmail.com --agree-tos --no-eff-email --staging -d bambriz.me,www.bambriz.me
+    command: certonly -v --webroot --non-interactive --webroot-path=/usr/local/tomcat/webapps --email bryanambzam@gmail.com --agree-tos --no-eff-email --staging -d bambriz.me,www.bambriz.me
 volumes:
   certs:
 networks:
