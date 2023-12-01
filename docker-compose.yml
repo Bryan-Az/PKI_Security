@@ -15,6 +15,7 @@ services:
       - web_network
 
   tls:
+    user: root
     depends_on:
       - tomcat
     image: certbot/certbot
