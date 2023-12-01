@@ -14,7 +14,7 @@
                    connectionTimeout="20000"
                    redirectPort="443" />
 
-        <Engine name="Catalina" defaultHost="localhost">
+        <Engine name="Catalina" defaultHost="bambriz.me">
 
             <Realm className="org.apache.catalina.realm.LockOutRealm">
                 <!-- Configure the Realm. You can modify this according to your authentication needs -->
@@ -22,7 +22,7 @@
                        resourceName="UserDatabase"/> -->
             </Realm>
 
-            <Host name="localhost"  appBase="webapps"
+            <Host name="bambriz.me"  appBase="webapps"
                   unpackWARs="true" autoDeploy="true">
                 <!-- Access log processes all example.
                      Documentation at: /docs/config/valve.html -->
