@@ -21,6 +21,7 @@ services:
     image: certbot/certbot
     container_name: tls
     volumes:
+      - ./var/www/html:/var/www/html
       - certs:/etc/letsencrypt
       - ./data:/data/letsencrypt
       - tls-log:/var/log/letsencrypt
