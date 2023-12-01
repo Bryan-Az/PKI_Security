@@ -1,20 +1,17 @@
 version: '3'
 services:
-  tomcat:
-    user: root
-    container_name: tomcat
-    image: tomcat:latest
+  webserver:
+    image: nginx:1.15.12-alpine
+    container_name: webserver
+    restart: unless-stopped
     ports:
-      - "8080:8080"
       - "80:80"
       - "443:443"
     volumes:
-      - ./web_apps:/usr/local/tomcat/webapps
-      - ./conf:/usr/local/tomcat/conf
-      - certs:/usr/local/tomcat/certs
-      - tls-log:/var/log/letsencrypt
+      - ./nginx/conf/:/etc/nginx/conf.d
+      - certs:/etc/letsencrypt #/home/test-user/certs:/etc/nginx/certs #/home/test-user/selfsigned-certs:/etc/nginx/certs #- certbot-etc:/etc/letsencrypt
     networks:
-      - web_network
+      - app_network
 
   tls:
     user: root
@@ -25,7 +22,6 @@ services:
     volumes:
       - certs:/etc/letsencrypt
       - ./data:/data/letsencrypt
-      - ./web_apps:/usr/local/tomcat/webapps
       - tls-log:/var/log/letsencrypt
     networks:
       - web_network
