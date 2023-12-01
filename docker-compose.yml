@@ -1,0 +1,33 @@
+version: '3'
+services:
+  tomcat:
+    container_name: tomcat
+    image: tomcat:latest
+    ports:
+      - 8080:8080
+      - 80:80
+      - 443:443
+    volumes:
+      - ./web_apps:/usr/local/tomcat/webapps
+      - ./conf:/usr/local/tomcat/conf
+      - certs:/usr/local/tomcat/certs
+    networks:
+      - web_network
+
+  tls:
+    depends_on:
+      - tomcat
+    image: certbot/certbot
+    container_name: tls
+    volumes:
+      - certs:/etc/letsencrypt
+      - ./data:/data/letsencrypt
+      - ./web_apps:/usr/local/tomcat/webapps
+    networks:
+      - web_network
+    command: certonly --webroot --non-interactive --webroot-path=/usr/local/tomcat/webapps --email bryanambzam@gmail.com --agree-tos --no-eff-email --staging -d bambriz.me, www.bambriz.me
+volumes:
+  certs:
+networks:
+  web_network:
+    driver: bridge
