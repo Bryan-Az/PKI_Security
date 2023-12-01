@@ -11,7 +11,7 @@ services:
       - ./nginx/conf/:/etc/nginx/conf.d
       - certs:/etc/letsencrypt #/home/test-user/certs:/etc/nginx/certs #/home/test-user/selfsigned-certs:/etc/nginx/certs #- certbot-etc:/etc/letsencrypt
     networks:
-      - app_network
+      - web_network
 
   tls:
     user: root
