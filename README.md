@@ -10,7 +10,7 @@ To get this code up and running, make sure you change the reference to the host 
         b. Let's Encrypt can issue free SSL/TLS certificates to enable HTTPS on web servers.
 
 
-2.  The TLS certificate created by Let's Encrypt will be used to install a web server (Tomcat for java apps).
+2.  The TLS certificate created by Let's Encrypt will be used to install a web server.
 
 As this is an assignment requiring two services (the Let's Encrypt CA service, and the Tomcat web service), I will be adding an additional service (Docker) to simplify and automate the orchestration of these two services and allow for quick setup.
 
