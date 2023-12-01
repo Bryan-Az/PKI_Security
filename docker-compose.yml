@@ -5,9 +5,9 @@ services:
     container_name: tomcat
     image: tomcat:latest
     ports:
-      - 8080:8080
-      - 80:80
-      - 443:443
+      - "8080:8080"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./web_apps:/usr/local/tomcat/webapps
       - ./conf:/usr/local/tomcat/conf
