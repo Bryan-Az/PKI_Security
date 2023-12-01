@@ -1,6 +1,7 @@
 version: '3'
 services:
   tomcat:
+    user: root
     container_name: tomcat
     image: tomcat:latest
     ports:
