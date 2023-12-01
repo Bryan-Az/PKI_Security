@@ -8,6 +8,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+      - ./var/www/html:/var/www/html
       - ./nginx/conf/:/etc/nginx/conf.d
       - certs:/etc/letsencrypt #/home/test-user/certs:/etc/nginx/certs #/home/test-user/selfsigned-certs:/etc/nginx/certs #- certbot-etc:/etc/letsencrypt
     networks:
@@ -25,7 +26,7 @@ services:
       - tls-log:/var/log/letsencrypt
     networks:
       - web_network
-    command: certonly -v --webroot --non-interactive --webroot-path=/usr/local/tomcat/webapps --email bryanambzam@gmail.com --agree-tos --no-eff-email --staging -d bambriz.me,www.bambriz.me
+    command: certonly -v --webroot --non-interactive --webroot-path=/var/www/html --email bryanambzam@gmail.com --agree-tos --no-eff-email --staging -d bambriz.me,www.bambriz.me
 volumes:
   certs:
   tls-log:
